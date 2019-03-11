@@ -1,21 +1,16 @@
 #include <DHT.h>
-//#include <DHT_U.h>
 #include "SoftwareSerial.h"
-#define dht_pin A0
 #define DHTTYPE DHT22
 String cont, Answer;
-int Option, Speed;
-int Time;
-DHT TempHum(dht_pin, DHTTYPE); //Define as pinagens do sensor
-SoftwareSerial Cell(2,3);
-int marcador;
+int Option, Speed, Time, Marker;
+DHT TempHum(A0, DHTTYPE); //Define the the DHT data pin.
+SoftwareSerial Cell(2,3); //Rx and Tx pins from the Bluetooth module.
   
 void setup(){
   Serial.begin(9600);
-  //delay(1000); // Aguarda 1 seg antes de acessar as informações do sensor
   TempHum.begin();
   Cell.begin(9600);
-  marcador = 0;
+  Marker = 0;
 }
  
 void loop(){
@@ -33,25 +28,13 @@ void loop(){
   Cell.println(F("  9  -  Reiniciar."));
   Cell.println(F("============================"));
   Cell.println(F(""));
-  /*if(Serial.available()){
-    Answer = Serial.read();
-    Serial.println(Answer); Cell.println(Answer);
-  }*/
-  while(!Cell.available())
-  {
-    if(marcador != 0){
+  while(!Cell.available()) { //While there's nothing in the software port 
+    if(Marker != 0){         //and the Marker steel been 0 do nothing.
       reading();
-  }
+    }
   }
   Option = Cell.read();
-   //Serial.println(Option);
-  /* //Test Port Information
-  Cell.print(F("=="));
-  Cell.write(Option);
-  Cell.println(F("=="));
-  Cell.println(F(""));*/
-
-  switch(Option-48){
+  switch(Option-48){  //Read the value and enable the matching option.
     case 1: Time = 1; reading(); break;
     case 2: Time = 2; reading(); break;
     case 3: Time = 5; reading(); break;
@@ -61,10 +44,7 @@ void loop(){
     case 7: Time = 300; reading(); break;
     case 8: Time = 600; reading(); break;
     case 9: setup(); break;
-    default:  /*Cell.print(F("=*="));
-              Cell.write(Speed);
-              Cell.print(F("=*="));*/
-             Cell.println("");
+    default: Cell.println("");
              Cell.println("Desculpe, essa opção não");
              Cell.println("está disponível.");
              Cell.println(""); 
@@ -74,13 +54,9 @@ void loop(){
 }
 
 void reading(){
-  float Humidity = TempHum.readHumidity();
-  float Temperature = TempHum.readTemperature();
-  marcador = 1;
-  // Mostra os valores lidos, na serial
-  Serial.print("Temperatura= "); Serial.print(Temperature); Serial.print("°C ");
-  Serial.print(" Umidade= "); Serial.print(Humidity); Serial.println("% ");
-  delay(Time*1000);
+  float Humidity = TempHum.readHumidity(); //Read the Humidity data from DHT.
+  float Temperature = TempHum.readTemperature(); //Read the Temperature data from DHT.
+  Marker = 1;
   Cell.print("Temperatura= "); Cell.print(Temperature); Cell.print("°C ");
   Cell.print(" Umidade= "); Cell.print(Humidity); Cell.println("% ");
   delay(Time*1000);
