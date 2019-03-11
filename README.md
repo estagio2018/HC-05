@@ -20,7 +20,7 @@ computador, recebendo assim uma resposta do módulo trabalhado.
     AT Commands.
     
     
-  Portanto segue alguns dos comandos utilizados para a
+  Desta forma segue alguns dos comandos utilizados para a
 configuração do módulo:
 
     1. Comando de Teste:
