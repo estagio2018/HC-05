@@ -1,4 +1,4 @@
-# HC-05_Bluetooth_Module
+# HC-05_Setting_Mode
   Nesse arquivo segue a seguência de comandos/códigos que
 iniciará e configurará o módulo aos parâmetros desejados ao
 qual o usuário (editor/programador) preferir.
