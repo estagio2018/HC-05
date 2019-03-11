@@ -1,67 +1,34 @@
-# HC-05_Bluetooth_Module
-  Nesse arquivo segue a seguência de comandos/códigos que
-iniciará e configurará o módulo aos parâmetros desejados ao
-qual o usuário (editor/programador) preferir.
+# HC-05_Terminal_Mode
+  Neste teste é usado um componente de medição de temperatura e umidade, DHT22,
+que fornece os dados para a porta serial do bluetooth.
 
-  Essa seguência de comandos recebe o nome de AT Commands,
-que serão inceridos (digitados) na porta serial do seu
-computador, recebendo assim uma resposta do módulo trabalhado.
+  Como sabemos, o arduino possui limitadas portas seriais ligadas ao hardware,
+porém podemos contornar essa deficiência utilizando a biblioteca "SoftwareSerial.h".
+Essa biblioteca cria pinos de recepção e transmissão de dados, Rx e Tx, no arduino,
+funcionando assim como uma porta serial.
 
-  É importante destacar três passos para o uso dessa função:
-  
-    i. O módulo só funcionará se o pino "key" estiver 
-    devidamente conectado ao Vcc para que a chave de função
-    do módulo esteja ativa;
-    ii. Apesar de o módulo ser alimentado por 5V as portas Tx e
-    Rx suportam uma variação de 1,8V~3,6V, portanto se faz
-    necessário um divisor de tenção: (R2=2R1).
-    iii. Antes de alimentar a placa é preciso estar precionando
-    a chave para que o módulo entenda que deve entrar no modo
-    AT Commands.
-    
-    
-  Desta forma segue alguns dos comandos utilizados para a
-configuração do módulo:
+  O sensor de Temperatura e Umidade também possui uma biblioteca própria que também,
+é disponibilizada pela arduino.cc. Apesar de um único pino de dados apresenta dois
+tipos de informações para leitura independente:
 
-    1. Comando de Teste:
-      Comando: "AT"                                 Resposta: "OK"
-      
-    2. Reset:
-      Comando: "AT+RESET"                           Resposta: "OK"
-      
-    3. Obter versão da placa:
-      Comando: "AT+VERSION?"                        Resposta: "+VERSION:<Param>"
-                                                              "OK"
-                                        
-    4. Restaurar definições de fabrica:
-      Comando: "AT+ORGL"                            Resposta: "OK"
-      
-                  Obs.: Definições de fabrica: Modo escravo, PIN: 1234,
-                        Nome do dispositivo: H-C-2010-06-01 e taxa de
-                        transferência de 38400bits/s.
-              
-    5. Obter endereço do módulo:
-      Comando: "AT+ADDR?"                           Resposta: "+ADDR:<Param>"
-                                                              "OK"
-                  Obs.: Endereço Bluetooth: "NAP:UAP:LAP"
+    DHT::readTemperature() //que lê a informação de temperatura
+    DHT::readHumidity() //que lê a informação de umidade do sensor.
     
-    6. Mudar ou Conferir o nome do módulo:
-      Comando: "AT+NAME=<Param>"                    Resposta: "OK"
-               "AT+NAME?"                                     "+NAME:<Param>"
-                                                              "OK(/FAIL)"
-    
-    7. Mudar ou Conferir o PIN:
-      Comando: "AT+PSWD=<Param>"                    Resposta: "OK"
-               "AT+PSWD?"                                     "+ PSWD :<Param>"
-                                                              "OK"
-                  Obs.: O PIN de fábrica costuma ser "1234".
-    
-    8. Mudar ou Conferir o parametro serial:
-      Comando: "AT+UART=<Param>,<Param2>,<Param3>"  Resposta: "OK"
-               "AT+UART=?"                                    "+UART=<Param>,<Param2>,<Param3>"
-                                                              "OK"
-                                                              
-                  Obs.: Param1:Taxa de tranmissão, Param2:Stop bit
-                        e Param3:Paridade.
-        
-        
+  A informação da porta serial criada para o bluetooth pode ser enviada para qualquer
+dispositivo que contenha bluetooth e o App "Bluetooth SPP" instalado no aparelho. Essa
+aplicação serve para enviar comandos e receber informações do módulo bluetooth. Funciona
+basicamente como um Terminal de Comandos móvel que escreve diretamente na porta serial
+do bluetooth.
+
+  Para isso precisamos ler as informações digitadas na porta serial do bluetooth e 
+dividí-las por funções, como por exemplo:
+
+    while(!SoftwareSerial::available());
+    if(SoftwareSerial::available()){
+      Command = SoftwareSerial::read();
+      switch(Command - 48){
+        case 1: SoftwareSerial::println(F("Do this.")); break;
+        case 2: SoftwareSerial::println(F("Do that.")); break;
+        default: SoftwareSerial::println(F("Do nothing."); break;
+      }
+    }
