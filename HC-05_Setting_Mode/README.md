@@ -10,11 +10,13 @@ computador, recebendo assim uma resposta do módulo trabalhado.
   É importante destacar três passos para o uso dessa função:
   
     i. O módulo só funcionará se o pino "key" estiver devidamente conectado ao Vcc
-    para que a chave de função do módulo esteja ativada;
+      para que a chave de função do módulo esteja ativada;
+    
     ii. Apesar de o módulo ser alimentado por 5V as portas Tx e Rx suportam uma
-    variação de 1,8V~3,6V, portanto se faz necessário um divisor de tenção: (R2=2R1).
+      variação de 1,8V~3,6V, portanto se faz necessário um divisor de tenção: (R2=2R1).
+    
     iii. Antes de alimentar a placa é preciso estar precionando a chave para que o
-    módulo entenda que deve entrar no modo AT Commands.
+      módulo entenda que deve entrar no modo AT Commands.
     
     
   Desta forma segue alguns dos comandos utilizados para a
