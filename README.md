@@ -1,4 +1,4 @@
-# HC-05_Bluetooth_Module
+# HC-05
 
 Rotina de testes e desenvolvimento do projeto de informação sobre o módulo,
 com o intuito de transmitir dados por vias sem fio facilitando também o controle
