@@ -34,7 +34,7 @@ dividí-las por funções, como por exemplo:
     }
 
   É importante resaltar que na função 'switch(var)' a variável lida está na faixa decimal,
-apesar de que o que será aplicado pelo 'case' está na função de caracter,isto é, o 0 literal
+apesar de que o que será aplicado pelo 'case' está na função de caracter, isto é, o 0 literal
 está como 48 em decimal segundo a tabela ASCII no link abaixo:
 
    https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi83K2g2PrgAhWCHLkGHbb2CJAQjRx6BAgBEAU&url=%2Furl%3Fsa%3Di%26source%3Dimages%26cd%3D%26ved%3D2ahUKEwi83K2g2PrgAhWCHLkGHbb2CJAQjRx6BAgBEAU%26url%3Dhttp%253A%252F%252Fgabihbia1415.blogspot.com%252F2014%252F10%252Ftabela-ascii.html%26psig%3DAOvVaw08UYtt2afzWnrLCWy_pRkX%26ust%3D1552414345783552&psig=AOvVaw08UYtt2afzWnrLCWy_pRkX&ust=1552414345783552
