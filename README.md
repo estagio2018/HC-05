@@ -9,7 +9,7 @@ O código para tal se encontra na pasta:
 
     HC-05_Setting_Mode
   
-Segundo, a transmissao dos dados que necessita em modo terminal, isso é, informações digitadas.
-Esse tipo de código está inserido na pasta:
+Segundo, a transmissao dos dados, que necessita de um terminal de comandos, isso é, informações
+digitadas. Esse tipo de código está inserido na pasta:
 
     HC-05_Terminal_Mode
