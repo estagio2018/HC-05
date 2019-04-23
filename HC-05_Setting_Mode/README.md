@@ -3,7 +3,7 @@
 iniciará e configurará o módulo aos parâmetros desejados ao
 qual o usuário (editor/programador) preferir.
 
-  Essa seguência de comandos recebe o nome de AT Commands,
+  Essa seguência de comandos recebe o nome de "AT Commands",
 que serão inceridos (digitados) na porta serial do seu
 computador, recebendo assim uma resposta do módulo trabalhado.
 
@@ -60,6 +60,6 @@ configuração do módulo:
                "AT+UART=?"                                    "+UART=<Param>,<Param2>,<Param3>"
                                                               "OK"
                                                               
-                  Obs.: Param1:Taxa de tranmissão, Param2:Stop bit
+                  Obs.: Param1:Taxa de transmissão, Param2:Stop bit
                         e Param3:Paridade.
         
