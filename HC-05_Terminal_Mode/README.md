@@ -8,7 +8,7 @@ Essa biblioteca cria pinos de recepção e transmissão de dados, Rx e Tx, no ar
 funcionando assim como uma porta serial.
 
   O sensor de Temperatura e Umidade também possui uma biblioteca própria que também,
-é disponibilizada pela arduino.cc. Apesar de um único pino de dados apresenta dois
+é disponibilizada pela www.arduino.cc/. Apesar de um único pino de dados apresenta dois
 tipos de informações para leitura independente:
 
     DHT::readTemperature() //que lê a informação de temperatura
