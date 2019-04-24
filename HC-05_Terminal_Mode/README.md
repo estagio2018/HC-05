@@ -1,5 +1,5 @@
 # HC-05_Terminal_Mode
-  Neste teste é usado um componente de medição de temperatura e umidade, DHT22,
+  Neste teste é usado um componente de medição de temperatura e umidade, DHT11,
 que fornece os dados para a porta serial do bluetooth.
 
   Como sabemos, o arduino possui limitadas portas seriais ligadas ao hardware,
